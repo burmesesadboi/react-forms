@@ -1,11 +1,11 @@
-// import BasicFormComponent from "./components/basic.form.component.jsx";
-import FormikComponent from "./components/formik.component.jsx";
+import BasicFormComponent from "./components/basic.form.component.jsx";
+// import FormikComponent from "./components/formik.component.jsx";
 
 function App() {
   return (
     <>
-      {/*<BasicFormComponent/>*/}
-      <FormikComponent/>
+      <BasicFormComponent/>
+      {/*<FormikComponent/>*/}
     </>
   );
 }
