@@ -1,22 +1,27 @@
 import { useState } from "react";
 
 const BasicForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    console.log(
-      "Submitted form with username: " + username + " and password: " + password
-    );
+    console.log(formData);
   };
 
-  const handleInputUsername = (event) => {
-    setUsername(event.target.value);
-  };
+  const handleUserInput = (event) => {
+    /*
+    const objInput = {
+      ...formData,
+      [event.target.name]: event.target.value,
+    };
 
-  const handleInputPassword = (event) => {
-    setPassword(event.target.value);
+    setFormData(objInput);
+    */
+
+    const { name, value } = event.target;
+    setFormData((prevState) => (prevState = { ...prevState, [name]: value }));
   };
 
   return (
@@ -25,9 +30,10 @@ const BasicForm = () => {
         Username:
         <input
           type="text"
-          value={username}
+          value={formData.username || ""}
           id="username"
-          onChange={handleInputUsername}
+          name="username"
+          onChange={handleUserInput}
         />
       </label>
       <br />
@@ -35,9 +41,10 @@ const BasicForm = () => {
         Password:
         <input
           type="password"
-          value={password}
+          value={formData.password || ""}
           id="password"
-          onChange={handleInputPassword}
+          name="password"
+          onChange={handleUserInput}
         />
       </label>
       <br />
