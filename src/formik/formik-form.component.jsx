@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   CheckBoxComponent,
   LabelComponent,
@@ -6,42 +7,34 @@ import {
 } from "../components/reusable-elements.component.jsx";
 
 const FormikForm = () => {
+  const initialValues = {
+    username: "",
+    email: "",
+    password: "",
+    gender: "Male",
+    checkBoxes: [],
+    maritalStatus: "",
+  };
+
+  const onSubmit = (values, { resetForm }) => {
+    console.table("Submitted Data:", values);
+
+    return resetForm({
+      values: initialValues,
+    });
+  };
+
+  const validationSchema = Yup.object({
+    username: Yup.string().required("Username is required!"),
+    email: Yup.string().email("Invalid Email!").required("Email is required!"),
+    password: Yup.string().required("Password is required!"),
+    maritalStatus: Yup.string().required("Marital status is required!"),
+  });
+
   const formikData = useFormik({
-    initialValues: {
-      username: "",
-      email: "",
-      password: "",
-      gender: "Male",
-      checkBoxes: [],
-      maritalStatus: "",
-    },
-    onSubmit: (values) => {
-      console.table("Submitted Data:", values);
-      // return alert(JSON.stringify(values, null, 2));
-    },
-    validate: (values) => {
-      const errors = {};
-      if (!values.username) {
-        errors.username = "Username is required";
-      }
-      if (!values.email) {
-        errors.email = "Email is required";
-      } else if (
-        !values.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
-      ) {
-        errors.email = "Please enter a valid email.";
-      }
-
-      if (!values.password) {
-        errors.password = "Password is required";
-      }
-
-      if (!values.maritalStatus) {
-        errors.maritalStatus = "Marital Status is required";
-      }
-
-      return errors;
-    },
+    initialValues, // key နဲ့ value တူလို့ တစ်ခါတည်းရေးလို့ရ
+    onSubmit,
+    validationSchema,
   });
 
   return (
@@ -65,8 +58,7 @@ const FormikForm = () => {
             id="username"
             name="username"
             value={formikData.values?.username}
-            onChange={formikData.handleChange}
-            onBlur={formikData.handleBlur}
+            {...formikData.getFieldProps("username")}
             className={`bg-gray-50 mb-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 outline-blue-500 blue:border-blue-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${
               formikData.touched.username &&
               formikData.errors.username &&
@@ -90,13 +82,12 @@ const FormikForm = () => {
             id="email"
             name="email"
             value={formikData.values?.email}
-            onChange={formikData.handleChange}
+            {...formikData.getFieldProps("email")}
             className={`bg-gray-50 mb-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 outline-blue-500 blue:border-blue-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${
               formikData.touched.email &&
               formikData.errors.email &&
               "border border-red-500"
             }`}
-            onBlur={formikData.handleBlur}
             placeholder="name@email.com"
           />
           {formikData.touched.email && formikData.errors.email && (
@@ -115,8 +106,7 @@ const FormikForm = () => {
             id="password"
             name="password"
             value={formikData.values?.password}
-            onChange={formikData.handleChange}
-            onBlur={formikData.handleBlur}
+            {...formikData.getFieldProps("password")}
             className={`bg-gray-50 mb-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 outline-blue-500 blue:border-blue-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${
               formikData.touched.password &&
               formikData.errors.password &&
@@ -156,6 +146,7 @@ const FormikForm = () => {
 
         <button
           type="submit"
+          disabled={formikData.isSubmitting || !formikData.isValid}
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Submit
