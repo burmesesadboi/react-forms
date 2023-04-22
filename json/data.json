@@ -1,0 +1,35 @@
+[
+  {
+    "genders": [
+      {
+        "id": 1,
+        "name": "male",
+        "value": "Male"
+      },
+      {
+        "id": 2,
+        "name": "female",
+        "value": "Female"
+      },
+      {
+        "id": 3,
+        "name": "other",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "checkBoxes": [
+      {
+        "id": 1,
+        "name": "subscribe",
+        "value": "Subscribe to News Letter"
+      },
+      {
+        "id": 2,
+        "name": "remember",
+        "value": "Remember Me"
+      }
+    ]
+  }
+]
