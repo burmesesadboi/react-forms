@@ -31,5 +31,44 @@
         "value": "Remember Me"
       }
     ]
+  },
+  {
+    "maritalStatus": [
+      {
+        "id": 0,
+        "name": "default",
+        "value": "--Select Option--"
+      },
+      {
+        "id": 1,
+        "name": "single",
+        "value": "Single"
+      },
+      {
+        "id": 2,
+        "name": "relationship",
+        "value": "Relationship"
+      },
+      {
+        "id": 3,
+        "name": "married",
+        "value": "Married"
+      },
+      {
+        "id": 4,
+        "name": "divorced",
+        "value": "Divorced"
+      },
+      {
+        "id": 5,
+        "name": "situational",
+        "value": "Situational"
+      },
+      {
+        "id": 6,
+        "name": "complicated",
+        "value": "Complicated"
+      }
+    ]
   }
 ]

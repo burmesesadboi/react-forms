@@ -1,8 +1,11 @@
-import BasicFormComponent from "./pages/basic-form.page.jsx";
+import FormikFormPage from "./pages/formik-form.page.jsx";
 
 function App() {
-  return <>
-  <BasicFormComponent/></>;
+  return (
+    <>
+      <FormikFormPage />
+    </>
+  );
 }
 
 export default App;
