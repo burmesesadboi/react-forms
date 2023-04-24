@@ -17,7 +17,7 @@ export const LabelComponent = ({ checkGender, handleChange }) => {
   );
 };
 
-export const SelectRelationshipStatus = ({
+export const SelectRelationshipStatus = /* eslint-disable react/prop-types */ ({
   touched,
   isError,
   handleBlur,
