@@ -8,7 +8,7 @@ const FormikFormComponent = () => {
     email: "",
     password: "",
     gender: "Male",
-    frameworks: [],
+    frameworks: ["React JS"],
     maritalStatus: "",
   };
   return (

@@ -16,6 +16,7 @@ const RadioButtons = (props) => {
               name={name}
               {...field}
               value={gender.value}
+              checked={gender.value === field.value}
             />
             <label htmlFor={gender.name}>{gender.value}</label>
           </li>

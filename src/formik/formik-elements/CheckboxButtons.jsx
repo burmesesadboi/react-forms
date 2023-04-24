@@ -2,7 +2,9 @@ import { useField } from "formik";
 
 const CheckboxButtons = (props) => {
   const { type, label, name, options } = props;
+
   const [field, meta, helpers] = useField(name);
+
   return (
     <>
       <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">
@@ -23,6 +25,7 @@ const CheckboxButtons = (props) => {
                   name={name}
                   {...field}
                   value={framework.value}
+                  checked={field.value.includes(framework.value)}
                 />
                 <label
                   className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
