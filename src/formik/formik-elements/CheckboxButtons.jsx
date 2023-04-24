@@ -2,7 +2,6 @@ import { useField } from "formik";
 
 const CheckboxButtons = (props) => {
   const { type, label, name, options } = props;
-
   const [field, meta, helpers] = useField(name);
 
   return (
