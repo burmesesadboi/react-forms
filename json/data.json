@@ -19,6 +19,35 @@
     ]
   },
   {
+    "frameworks": [
+      {
+        "id": 1,
+        "name": "reactJS",
+        "value": "React JS"
+      },
+      {
+        "id": 2,
+        "name": "vueJS",
+        "value": "Vue JS"
+      },
+      {
+        "id": 3,
+        "name": "angularJS",
+        "value": "Angular"
+      },
+      {
+        "id": 4,
+        "name": "nextJS",
+        "value": "Next JS"
+      },
+      {
+        "id": 5,
+        "name": "typescript",
+        "value": "TypeScript"
+      }
+    ]
+  },
+  {
     "checkBoxes": [
       {
         "id": 1,
